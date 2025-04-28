@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>chic charmss</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        /* الصفحة الرئيسية */
+        .home-page {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 100vh;
+            background-color: #FF3385;
+            color: white;
+            position: relative;
+        }
+
+        /* الجنب الأيمن (الصورة) */
+        .home-page .images {
+            width: 33%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-page .images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center right;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .home-page .images img:hover {
+            transform: scale(1.05);
+        }
+
+        /* النص في المنتصف */
+        .home-page .text {
+            width: 67%;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .home-page .text p {
+            margin: 20px 0;
+        }
+
+        .home-page .shop-now-btn {
+            padding: 15px 40px;
+            background-color: white;
+            color: #FF3385;
+            font-size: 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: bold;
+        }
+
+        .home-page .shop-now-btn:hover {
+            background-color: #ff5078;
+            transform: translateY(-3px);
+        }
+
+        /* الصفحة البيضاء التي تظهر في البداية */
+        .content {
+            display: none; /* إخفاء المحتوى في البداية */
+            padding: 40px 20px;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #FF3385;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* تنسيق الجمل داخل الصفحة الثانية */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); /* تصغير الحجم إلى 180px */
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .item {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .item img:hover {
+            transform: scale(1.05);
+        }
+
+        .item .price {
+            font-size: 18px;
+            color: #333;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .item .main-button {
+            padding: 12px 30px;
+            background-color: #FF3385;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        .item .main-button:hover {
+            background-color: #ff5078;
+            transform: translateY(-3px);
+        }
+
+        /* تنسيق الأزرار في الصفحة */
+        .center-btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+
+        /* زر العودة إلى الصفحة الرئيسية بنفس تنسيق زر "Shop Now" */
+        .back-home-btn {
+            padding: 15px 40px;
+            background-color: #FF3385; /* نفس اللون الخلفي لزر "Shop Now" */
+            color: white; /* النص باللون الأبيض */
+            font-size: 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        /* تأثير hover لزر العودة */
+        .back-home-btn:hover {
+            background-color: #ff5078;
+            transform: translateY(-3px); /* التأثير اللي يرفع الزر عند التمرير */
+        }
+
+        /* تنسيق الصورة التي تمتد بعرض الصفحة */
+        .top-image {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 20px; /* المسافة فوق الصورة */
+        }
+
+        .top-image img {
+            width: 100%;
+            height: 75vh; /* تعيين الطول إلى auto للحفاظ على النسب */
+            object-fit: cover; /* لتغطية العرض بالكامل */
+             
+        }
+    </style>
+</head>
+<body>
+
+<!-- الصفحة الرئيسية -->
+<div class="home-page" id="homePage">
+    <div class="images">
+        <img src="https://i.imgur.com/l0VVVFa.jpeg" alt="صورة 1">
+    </div>
+    
+    <div class="text">
+        <p>مرحبًا بكم في Chic Charms! نقدم لكم أرقى الاكسسوارات لجعل إطلالاتكم أكثر جمالًا وأناقة.</p>
+        <button class="shop-now-btn" onclick="showPage('accessoriesPage')">Shop Now</button>
+    </div>
+</div>
+
+<!-- صفحة الاكسسوارات -->
+<div class="content" id="accessoriesPage">
+    <div class="page-title">💖 Welcome to Chic Charms</div>
+    
+    <!-- الصورة التي تمتد بعرض الصفحة ولكن نصف طولها -->
+    <div class="top-image">
+        <img src="https://i.imgur.com/tKOkuoZ.jpeg" alt="صورة الصفحة العلوية">
+    </div>
+
+    <div class="container">
+        <!-- إكسسوار 1 -->
+        <div class="item">
+            <img src="https://i.postimg.cc/bZjtJ901/wafdia-accessories-14040208-212253716.jpg" alt="إكسسوار 1">
+            <div class="price">300LE</div>
+            <button class="main-button" onclick="sendToInstagram('https://i.postimg.cc/bZjtJ901/wafdia-accessories-14040208-212253716.jpg')">To Order</button>
+        </div>
+        <!-- إكسسوار 2 -->
+        <div class="item">
+            <img src="https://i.postimg.cc/2qkLdjK6/wafdia-accessories-14040208-212339015.jpg" alt="إكسسوار 2">
+            <div class="price">250LE</div>
+            <button class="main-button" onclick="sendToInstagram('https://i.postimg.cc/2qkLdjK6/wafdia-accessories-14040208-212339015.jpg')">To Order</button>
+        </div>
+        <!-- إكسسوار 3 -->
+        <div class="item">
+            <img src="https://i.postimg.cc/phy97GxM/wafdia-accessories-14040208-212403421.jpg" alt="إكسسوار 3">
+            <div class="price">200LE</div>
+            <button class="main-button" onclick="sendToInstagram('https://i.postimg.cc/phy97GxM/wafdia-accessories-14040208-212403421.jpg')">To Order</button>
+        </div>
+        <!-- إكسسوار 4 -->
+        <div class="item">
+            <img src="https://i.postimg.cc/cvM88tT2/wafdia-accessories-14040208-212415791.jpg" alt="إكسسوار 4">
+            <div class="price">150LE</div>
+            <button class="main-button" onclick="sendToInstagram('https://i.postimg.cc/cvM88tT2/wafdia-accessories-14040208-212415791.jpg')">To Order</button>
+        </div>
+        <!-- إكسسوار 5 -->
+        <div class="item">
+            <img src="https://i.postimg.cc/zLxbxmsk/wafdia-accessories-14040208-214452817.jpg" alt="إكسسوار 5">
+            <div class="price">300LE</div>
+            <button class="main-button" onclick="sendToInstagram('https://i.postimg.cc/zLxbxmsk/wafdia-accessories-14040208-214452817.jpg')">To Order</button>
+        </div>
+        <!-- إكسسوار 6 -->
+        <div class="item">
+            <img src="https://i.postimg.cc/nj5st4cj/wafdia-accessories-14040208-214624972.jpg" alt="إكسسوار 6">
+            <div class="price">250LE</div>
+            <button class="main-button" onclick="sendToInstagram('https://i.postimg.cc/nj5st4cj/wafdia-accessories-14040208-214624972.jpg')">To Order</button>
+        </div>
+        <!-- إكسسوار 7 -->
+        <div class="item">
+            <img src="https://i.postimg.cc/xNzXjXcs/wafdia-accessories-14040208-214708367.jpg" alt="إكسسوار 7">
+            <div class="price">200LE</div>
+            <button class="main-button" onclick="sendToInstagram('https://i.postimg.cc/xNzXjXcs/wafdia-accessories-14040208-214708367.jpg')">To Order</button>
+        </div>
+        <!-- إكسسوار 8 -->
+        <div class="item">
+            <img src="https://i.postimg.cc/WtFFwHXM/wafdia-accessories-14040208-214717177.jpg" alt="إكسسوار 8">
+            <div class="price">150LE</div>
+            <button class="main-button" onclick="sendToInstagram('https://i.postimg.cc/WtFFwHXM/wafdia-accessories-14040208-214717177.jpg')">To Order</button>
+        </div>
+        <!-- إكسسوار 9 -->
+        <div class="item">
+            <img src="https://i.postimg.cc/4nDKLQSj/wafdia-accessories-14040208-214744235.jpg" alt="إكسسوار 9">
+            <div class="price">350LE</div>
+            <button class="main-button" onclick="sendToInstagram('https://i.postimg.cc/4nDKLQSj/wafdia-accessories-14040208-214744235.jpg')">To Order</button>
+        </div>
+        <!-- إكسسوار 10 -->
+        <div class="item">
+            <img src="https://i.postimg.cc/LnjJrZd5/wafdia-accessories-14040208-214808891.jpg" alt="إكسسوار 10">
+            <div class="price">300LE</div>
+            <button class="main-button" onclick="sendToInstagram('https://i.postimg.cc/LnjJrZd5/wafdia-accessories-14040208-214808891.jpg')">To Order</button>
+        </div>
+        <!-- إكسسوار 11 -->
+        <div class="item">
+            <img src="https://i.postimg.cc/Wdjdjbjn/wafdia-accessories-14040208-214812746.jpg" alt="إكسسوار 11">
+            <div class="price">200LE</div>
+            <button class="main-button" onclick="sendToInstagram('https://i.postimg.cc/Wdjdjbjn/wafdia-accessories-14040208-214812746.jpg')">To Order</button>
+        </div>
+        <!-- إكسسوار 12 -->
+        <div class="item">
+            <img src="https://i.postimg.cc/DSg8zkwK/wafdia-accessories-14040208-214819171.jpg" alt="إكسسوار 12">
+            <div class="price">150LE</div>
+            <button class="main-button" onclick="sendToInstagram('https://i.postimg.cc/DSg8zkwK/wafdia-accessories-14040208-214819171.jpg')">To Order</button>
+        </div>
+    </div>
+
+    <!-- زر العودة -->
+    <div class="center-btn">
+        <button class="back-home-btn" onclick="showPage('homePage')">Back to Home</button>
+    </div>
+</div>
+
+<script>
+    function showPage(pageId) {
+        const pages = document.querySelectorAll('.content, .home-page');
+        pages.forEach(page => page.style.display = 'none');
+        const targetPage = document.getElementById(pageId);
+        targetPage.style.display = 'block';
+
+        // عند العودة إلى الصفحة الرئيسية، تأكد من أنها تعرض بشكل صحيح
+        if (pageId === 'homePage') {
+            document.querySelector('.home-page').style.display = 'flex'; // تأكد من أن الصفحة الرئيسية ظاهرة بشكل صحيح
+        }
+    }
+
+    function sendToInstagram(imageUrl) {
+        const message = encodeURIComponent(`مرحبًا، أنا مهتم بهذا المنتج:\n${imageUrl}`);
+        const chatLink = "https://www.instagram.com/direct/t/17843286834472085?text=" + message;
+        window.open(chatLink, "_blank");
+    }
+
+    window.onload = function() {
+        document.querySelector('.home-page').style.display = 'flex';
+    };
+</script>
+
+</body>
+</html>
